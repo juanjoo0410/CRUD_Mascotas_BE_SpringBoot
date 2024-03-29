@@ -46,7 +46,7 @@ public class MascotaController {
 		Map<String, Object> response = new HashMap<>();
 		try {
 			Mascota mascotaDel = mascotaService.findById(id);
-			mascotaService.delete(mascotaDel);
+			if (mascotaDel != null) mascotaService.delete(mascotaDel);
 			return new ResponseEntity<>(mascotaDel, HttpStatus.NO_CONTENT);
 		} catch (DataAccessException e) {
 			response.put("mensaje", e.getMessage());
